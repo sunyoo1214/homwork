@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ysw.exam.demo.service.MemberService;
 import com.ysw.exam.demo.vo.Member;
@@ -19,9 +20,24 @@ public class AdmMemberController {
 	}
 	
 	@RequestMapping("/adm/member/list")
-	public String showList(Model model) {
-		List<Member> members = MemberService.getMembers();
+	public String showList(Model model, @RequestParam(defaultValue = "name, cellphoneNo") String searchKeywordTypeCode, 
+			@RequestParam(defaultValue = "") String searchKeyword, @RequestParam(defaultValue = "1") int page) {
 		
+		if (searchKeyword == null) {
+			return "검색 결과가 없습니다.";
+		}
+		
+		int membersCount = memberService.getMembersCount(searchKeywordTypeCode, searchKeyword);
+		
+		int itemsCountInAPage = 10;
+		int pagesCount = (int) Math.ceil((double) membersCount / itemsCountInAPage);
+		
+		List<Member> members = MemberService.getMembers(searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
+		
+		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
+		model.addAttribute("searchKeyword", searchKeyword);
+		model.addAttribute("itemsCountInAPage", itemsCountInAPage);
+		model.addAttribute("page", page);
 		model.addAttribute("members", members);
 		
 		return "adm/member/list";
