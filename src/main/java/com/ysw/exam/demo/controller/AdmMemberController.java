@@ -21,23 +21,12 @@ public class AdmMemberController {
 	
 	@RequestMapping("/adm/member/list")
 	public String showList(Model model, @RequestParam(defaultValue = "name, cellphoneNo") String searchKeywordTypeCode, 
-			@RequestParam(defaultValue = "") String searchKeyword, @RequestParam(defaultValue = "1") int page) {
+			@RequestParam(defaultValue = "") String searchKeyword) {
 		
-		if (searchKeyword == null) {
-			return "검색 결과가 없습니다.";
-		}
-		
-		int membersCount = memberService.getMembersCount(searchKeywordTypeCode, searchKeyword);
-		
-		int itemsCountInAPage = 10;
-		int pagesCount = (int) Math.ceil((double) membersCount / itemsCountInAPage);
-		
-		List<Member> members = MemberService.getMembers(searchKeywordTypeCode, searchKeyword, itemsCountInAPage, page);
+		List<Member> members = MemberService.getMembers(searchKeywordTypeCode, searchKeyword);
 		
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
-		model.addAttribute("itemsCountInAPage", itemsCountInAPage);
-		model.addAttribute("page", page);
 		model.addAttribute("members", members);
 		
 		return "adm/member/list";

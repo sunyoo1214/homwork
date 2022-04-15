@@ -16,21 +16,10 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public static List<Member> getMembers() {
-		return memberRepository.getMembers();
-	}
 
-	public int getMembersCount(String searchKeywordTypeCode, String searchKeyword) {
-		return memberRepository.getMembersCount(searchKeywordTypeCode, searchKeyword);
-	}
+	public static List<Member> getMembers(String searchKeywordTypeCode, String searchKeyword) {
 
-	public static List<Member> getMembers(String searchKeywordTypeCode, String searchKeyword, int itemsCountInAPage,
-			int page) {
-		
-		int limitStart = (page - 1) * itemsCountInAPage;
-		int limitTake = itemsCountInAPage;
-
-		List<Member> members = memberRepository.getMembers(searchKeywordTypeCode, searchKeyword, limitStart, limitTake);
+		List<Member> members = memberRepository.getMembers(searchKeywordTypeCode, searchKeyword);
 
 		return members;
 	}
