@@ -10,20 +10,25 @@
       <div>
         회원 수 : <span class="badge badge-primary">${membersCount}</span> 명
       </div>
-      <form class="mt-8">
-        
+      
+      <div class="flex mt-8" > 
+      
+      <form>
         <input class="input input-bordered w-72 mr-2" type="text" placeholder="검색어" maxlength="20" value="${param.searchKeyword}" name="searchKeyword" />
-        
         <select class="select select-bordered" data-value="${param.searchKeywordTypeCode}" name="searchKeywordTypeCode">
           <option disabled="disabled">검색타입</option>
           <option value="name">이름</option>
           <option value="cellphoneNo">전화번호</option>
           <option value="name, cellphoneNo">이름, 전화번호</option>
-        </select>
-        
-        <button type="submit" class="ml-2 btn btn-primary">조회</button>
-      </form>
-      
+        </select>     
+          <button type="submit" class="ml-2 btn btn-primary">조회</button>
+      </form>    
+      <form>
+        <a class="ml-2 btn btn-primary btn-text-link" href="../member/doDelete?memberId=${memberId}">삭제</a>
+      </form> 
+      </div>
+
+ 
       
     <div class="mt-8">
         <table class="table w-full">
