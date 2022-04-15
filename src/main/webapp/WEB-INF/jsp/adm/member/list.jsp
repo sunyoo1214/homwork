@@ -7,6 +7,10 @@
 
 <section class="mt-5">
     <div class="container mx-auto px-3">
+      <div>
+        회원 수 : ${membersCount}명
+      </div>
+    
       <div class="overflow-x-auto">
         <table class="table w-full">
           <colgroup>

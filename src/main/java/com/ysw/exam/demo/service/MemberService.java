@@ -24,4 +24,9 @@ public class MemberService {
 		return members;
 	}
 
+
+	public int getMembersCount(int authLevel, String searchKeywordTypeCode, String searchKeyword) {
+		return memberRepository.getMembersCount(authLevel, searchKeywordTypeCode, searchKeyword);
+	}
+
 }
