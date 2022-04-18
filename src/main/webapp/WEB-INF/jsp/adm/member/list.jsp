@@ -45,7 +45,7 @@
           <thead>
             <tr>
               <th>
-                <input type="checkbox" class="checkbox checkbox-primary checkbox checkbox-xs"> 
+                <input type="checkbox" class="checkbox checkbox-primary checkbox checkbox-xs" name="checkedMember"> 
               </th>
               <th>번호</th>
               <th>가입날짜</th>
@@ -61,7 +61,7 @@
           <c:forEach var="member" items="${members}">
               <tr>
                 <td>
-                  <input type="checkbox" class="checkbox checkbox-primary checkbox checkbox-xs">
+                  <input type="checkbox" class="checkbox checkbox-primary checkbox checkbox-xs" name="checkedMember" value=${getMember}>
                 </td>
                 <td>${member.id}</td>
                 <td>${member.regDate.substring(2, 16)}</td>

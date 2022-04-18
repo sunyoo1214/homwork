@@ -1,16 +1,16 @@
+
 @font-face {
-  font-family: 'GmarketSansMedium';
-  src:
-    url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
-    format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Arita-dotum-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
+
 
 html > body,
 html > body input,
 html > body button,
 html > body select {
-  font-family:"GmarketSansMedium";
+  font-family:"Arita-dotum-Medium";
   line-height:1.3;
 }
