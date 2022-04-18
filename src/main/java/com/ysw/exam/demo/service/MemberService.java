@@ -9,24 +9,33 @@ import com.ysw.exam.demo.vo.Member;
 
 @Service
 public class MemberService {
+		private static MemberRepository memberRepository;
 
-	private static MemberRepository memberRepository;
-	
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
 
-
 	public static List<Member> getMembers(String searchKeywordTypeCode, String searchKeyword) {
-
-		List<Member> members = memberRepository.getMembers(searchKeywordTypeCode, searchKeyword);
-
-		return members;
+		return memberRepository.getMembers(searchKeywordTypeCode, searchKeyword);
 	}
-
 
 	public int getMembersCount(int authLevel, String searchKeywordTypeCode, String searchKeyword) {
 		return memberRepository.getMembersCount(authLevel, searchKeywordTypeCode, searchKeyword);
 	}
 
+	public Member getMember(int id) {
+		return memberRepository.getMember(id);
+	}
+
+	public boolean deleteMember(int id) {
+		Member member = getMember(id);
+
+		if (member == null) {
+			return false;
+		}
+
+		memberRepository.deleteMember(id);
+
+		return true;
+	}
 }
