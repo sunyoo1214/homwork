@@ -35,4 +35,6 @@ public class AdmMemberController {
 		
 		return "adm/member/list";
 	}
+	
+	
 }

@@ -44,6 +44,9 @@
           </colgroup>
           <thead>
             <tr>
+              <th>
+                <input type="checkbox" class="checkbox checkbox-primary checkbox checkbox-xs"> 
+              </th>
               <th>번호</th>
               <th>가입날짜</th>
               <th>아이디</th>
@@ -57,6 +60,9 @@
           <tbody>
           <c:forEach var="member" items="${members}">
               <tr>
+                <td>
+                  <input type="checkbox" class="checkbox checkbox-primary checkbox checkbox-xs">
+                </td>
                 <td>${member.id}</td>
                 <td>${member.regDate.substring(2, 16)}</td>
                 <td>${member.loginId}</td>
