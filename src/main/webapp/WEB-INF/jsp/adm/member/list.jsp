@@ -26,9 +26,13 @@
         </select>
         <button type="submit" class="ml-2 btn btn-primary">조회</button>
       </form>
-      <form>
-        <a class="ml-2 btn btn-primary btn-text-link" href="../member/doDelete?memberId=${memberId}">삭제</a>
+
+      <button class="ml-2 btn btn-primary do-delete-button">삭제</button>
+
+      <form style="display: none;" method="POST" name="do-delete-form" action="../member/doDelete?memberId=${member.id}">
+        <input type="hidden" name="memberId" value="" />
       </form>
+
     </div>
 
     <div class="mt-8">
@@ -96,6 +100,28 @@
             $('.checkbox-all-member-id').prop('checked', allChecked);
           });
     </script>
+    <script>
+      $('.do-delete-button').click(function(){
+		
+      const values = $('.checkbox-member-id:checked').map((index, el) => el.value).toArray();
+      
+      if (values.length == 0) {
+        alert('삭제할 회원을 선택해주세요.');
+        return;
+      }
+      
+      
+      if (confirm('정말 삭제하시겠습니까?') == false){
+        return;
+      }
+      
+      document['do-delete-form'].memberId.value = values.join(',');
+      document['do-delete-form'].submit();
+      
+      });
+
+      </script>
+
   </div>
 </section>
 
