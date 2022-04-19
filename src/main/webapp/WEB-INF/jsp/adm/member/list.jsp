@@ -116,7 +116,7 @@
       }
       
       document['do-delete-form'].memberId.value = values.join(',');
-      document['do-delete-form'].submit();
+      alert(document['do-delete-form'].memberId.value);
       
       });
 
