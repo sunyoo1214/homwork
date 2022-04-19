@@ -66,4 +66,11 @@ public class AdmMemberController {
 		return member;
 	}
 	
+	@RequestMapping("/adm/member/doAdd")
+	@ResponseBody
+	public Member doAdd(String ) {
+		
+	}
+	}
+	
 }

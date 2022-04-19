@@ -14,9 +14,9 @@
     </div>
 
     <div class="flex mt-8">
-
-      <form>
-        <input class="input input-bordered w-72 mr-2" type="text" placeholder="검색어" maxlength="20"
+     
+      <form class="flex items-center">
+        <input class="input input-bordered w-96 mr-2" type="text" placeholder="검색어" maxlength="20"
           value="${param.searchKeyword}" name="searchKeyword" />
         <select class="select select-bordered" data-value="${param.searchKeywordTypeCode}" name="searchKeywordTypeCode">
           <option disabled="disabled">검색타입</option>
@@ -24,17 +24,27 @@
           <option value="cellphoneNo">전화번호</option>
           <option value="name, cellphoneNo">이름, 전화번호</option>
         </select>
-        <button type="submit" class="ml-2 btn btn-primary">조회</button>
+        <div>
+          <input class="ml-6" type="radio" name="authLevel" value="7" />
+          <label>관리자</label>
+          <input class="ml-6" type="radio" name="authLevel" value="3" />
+          <label>사용자</label>
+          </div>
       </form>
-
-      <button class="ml-2 btn btn-primary do-delete-button">삭제</button>
-
+     </div>
+     <div class="mt-4">
+      <button type="submit" class="ml-6 btn btn-primary">조회</button>
+      <button class="ml-2 btn btn-primary do-add-button">저장</button>
+      <form style="display: none;" method="POST" name="do-add-form" action="../member/doAdd">
+        <input type="hidden" name="memberId" value="" />
+      </form>
+      
+      <button class="ml-2 btn btn-secondary do-delete-button">삭제</button>
       <form style="display: none;" method="POST" name="do-delete-form" action="../member/doDelete">
         <input type="hidden" name="memberId" value="" />
       </form>
-
     </div>
-
+ 
     <div class="mt-8">
       <table class="table w-full">
         <colgroup>
