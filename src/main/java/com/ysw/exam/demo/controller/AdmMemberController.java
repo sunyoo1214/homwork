@@ -1,5 +1,6 @@
 package com.ysw.exam.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -39,17 +40,16 @@ public class AdmMemberController {
 	
 	@RequestMapping("/adm/member/doDelete")
 	@ResponseBody
-	public String doDelete(int id) {
-		Member member = memberService.getMember(id);
+	public String doDelete(@RequestParam(defaultValue = "") String memberId) {
+		List<Integer> memberIds = new ArrayList<>();
 		
-		if (member == null) {
-			return "삭제할 회원을 선택해주세요.";
+		for (String id : memberId.split(",")) {
+			memberIds.add(Integer.parseInt(id));
 		}
-	
 
-		memberService.deleteMember(id);
+		memberService.deleteMember(memberIds);
 		
-		return "선택한 회원의 정보가 삭제되었습니다.";
+		return ("선택한 회원의 정보가 삭제되었습니다.");
 		
 	}
 	

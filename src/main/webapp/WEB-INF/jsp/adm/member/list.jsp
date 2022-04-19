@@ -29,7 +29,7 @@
 
       <button class="ml-2 btn btn-primary do-delete-button">삭제</button>
 
-      <form style="display: none;" method="POST" name="do-delete-form" action="../member/doDelete?memberId=${member.id}">
+      <form style="display: none;" method="POST" name="do-delete-form" action="../member/doDelete">
         <input type="hidden" name="memberId" value="" />
       </form>
 
@@ -85,8 +85,8 @@
 
     <script>
           $('.checkbox-all-member-id').change(function() {
-            const $all = $(this);
-            const allChecked = $all.prop('checked');
+            const all = $(this);
+            const allChecked = all.prop('checked');
             
             $('.checkbox-member-id').prop('checked', allChecked);
           });
@@ -116,7 +116,7 @@
       }
       
       document['do-delete-form'].memberId.value = values.join(',');
-      alert(document['do-delete-form'].memberId.value);
+      document['do-delete-form'].submit();
       
       });
 

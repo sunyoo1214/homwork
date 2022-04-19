@@ -9,7 +9,7 @@ import com.ysw.exam.demo.vo.Member;
 
 @Service
 public class MemberService {
-		private static MemberRepository memberRepository;
+	private static MemberRepository memberRepository;
 
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
@@ -27,15 +27,13 @@ public class MemberService {
 		return memberRepository.getMember(id);
 	}
 
-	public boolean deleteMember(int id) {
-		Member member = getMember(id);
+	public void deleteMember(List<Integer> memberIds) {
+		for (int id : memberIds) {
+			Member member = memberRepository.getMember(id);
 
-		if (member == null) {
-			return false;
+			if (member != null) {
+				memberRepository.deleteMember(id);
+			}
 		}
-
-		memberRepository.deleteMember(id);
-
-		return true;
 	}
 }
