@@ -17,16 +17,16 @@
      
       <form class="flex items-center">
         <input class="input input-bordered w-96 mr-2" type="text" placeholder="검색어" maxlength="20"
-          value="${param.searchKeyword}" name="searchKeyword" />
-        <select class="select select-bordered" data-value="${param.searchKeywordTypeCode}" name="searchKeywordTypeCode">
+          value="${searchKeyword}" name="searchKeyword" />
+        <select class="select select-bordered" data-value="${searchKeywordTypeCode}" name="searchKeywordTypeCode">
           <option disabled="disabled">검색타입</option>
           <option value="name">이름</option>
           <option value="cellphoneNo">전화번호</option>
           <option value="name, cellphoneNo">이름, 전화번호</option>
         </select>
         
-        <label><input class="ml-6" type="radio" name="authLevel" value= "7" />관리자</label>
-        <label><input class="ml-6" type="radio" name="authLevel" value= "3" />사용자</label>
+        <label><input class="ml-6" type="radio" name="searchAuthLevel" value= "7" />관리자</label>
+        <label><input class="ml-6" type="radio" name="searchAuthLevel" value= "3" />사용자</label>
  
         <button type="submit" class="ml-6 btn btn-primary">조회</button>
         

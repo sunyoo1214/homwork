@@ -30,6 +30,7 @@ public class AdmMemberController {
 		
 		List<Member> members = MemberService.getMembers(searchAuthLevel, searchKeywordTypeCode, searchKeyword);
 		
+		model.addAttribute("searchAuthLevel", searchAuthLevel);
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
 		model.addAttribute("members", members);
