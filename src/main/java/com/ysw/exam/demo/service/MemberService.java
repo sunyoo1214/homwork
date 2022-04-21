@@ -15,12 +15,12 @@ public class MemberService {
 		this.memberRepository = memberRepository;
 	}
 
-	public static List<Member> getMembers(String searchKeywordTypeCode, String searchKeyword) {
-		return memberRepository.getMembers(searchKeywordTypeCode, searchKeyword);
+	public static List<Member> getMembers(int searchAuthLevel, String searchKeywordTypeCode, String searchKeyword) {
+		return memberRepository.getMembers(searchAuthLevel, searchKeywordTypeCode, searchKeyword);
 	}
 
-	public int getMembersCount(int authLevel, String searchKeywordTypeCode, String searchKeyword) {
-		return memberRepository.getMembersCount(authLevel, searchKeywordTypeCode, searchKeyword);
+	public int getMembersCount(int searchAuthLevel, String searchKeywordTypeCode, String searchKeyword) {
+		return memberRepository.getMembersCount(searchAuthLevel, searchKeywordTypeCode, searchKeyword);
 	}
 
 	public Member getMember(int id) {

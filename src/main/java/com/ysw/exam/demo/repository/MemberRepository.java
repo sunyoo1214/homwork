@@ -16,6 +16,19 @@ public interface MemberRepository {
 			SELECT M.*
 			FROM `member` AS M
 			WHERE 1
+			<if test="searchAuthLevel != 0">
+			  	AND M.authLevel = #{searchAuthLevel}
+	  		</if>
+	  		<if test="searchAuthLevel != ''">
+				<choose>
+					<when test="searchAuthLevel == 7">
+					 	AND M.authLevel LIKE CONCAT('%', #{searchAuthLevel}, '%')
+			 		</when>
+			 		<otherwise test="searchAuthLevel == 3">
+					 	AND M.authLevel LIKE CONCAT('%', #{searchAuthLevel}, '%')
+			 		</otherwise>
+				</choose>
+			</if>
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'name'">
@@ -35,16 +48,13 @@ public interface MemberRepository {
 			</if>
 			</script>
 			""")
-	List<Member> getMembers(String searchKeywordTypeCode, String searchKeyword);
+	List<Member> getMembers(int searchAuthLevel, String searchKeywordTypeCode, String searchKeyword);
 
 	@Select("""
 			<script>
 			SELECT COUNT(*) AS cnt
 			FROM `member` AS M
 			WHERE 1
-			<if test="authLevel != 0">
-			  		AND M.authLevel = #{authLevel}
-			</if>
 			<if test="searchKeyword != ''">
 				<choose>
 					<when test="searchKeywordTypeCode == 'name'">
@@ -64,7 +74,7 @@ public interface MemberRepository {
 			</if>
 			</script>
 			""")
-	int getMembersCount(int authLevel, String searchKeywordTypeCode, String searchKeyword);
+	int getMembersCount(int searchAuthLevel, String searchKeywordTypeCode, String searchKeyword);
 
 	@Select("""
 			<script>

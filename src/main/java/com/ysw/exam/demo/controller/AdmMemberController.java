@@ -22,13 +22,13 @@ public class AdmMemberController {
 	}
 	
 	@RequestMapping("/adm/member/list")
-	public String showList(Model model, @RequestParam(defaultValue = "0") int authLevel, @RequestParam(defaultValue = "name, cellphoneNo") String searchKeywordTypeCode, 
+	public String showList(Model model, @RequestParam(defaultValue = "0") int searchAuthLevel, @RequestParam(defaultValue = "name, cellphoneNo") String searchKeywordTypeCode, 
 			@RequestParam(defaultValue = "") String searchKeyword) {
 		
 		
-		int membersCount = memberService.getMembersCount(authLevel, searchKeywordTypeCode, searchKeyword);
+		int membersCount = memberService.getMembersCount(searchAuthLevel, searchKeywordTypeCode, searchKeyword);
 		
-		List<Member> members = MemberService.getMembers(searchKeywordTypeCode, searchKeyword);
+		List<Member> members = MemberService.getMembers(searchAuthLevel, searchKeywordTypeCode, searchKeyword);
 		
 		model.addAttribute("searchKeywordTypeCode", searchKeywordTypeCode);
 		model.addAttribute("searchKeyword", searchKeyword);
@@ -64,13 +64,6 @@ public class AdmMemberController {
 		}
 		
 		return member;
-	}
-	
-	@RequestMapping("/adm/member/doAdd")
-	@ResponseBody
-	public Member doAdd(String ) {
-		
-	}
 	}
 	
 }

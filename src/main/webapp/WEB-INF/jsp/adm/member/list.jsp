@@ -24,25 +24,22 @@
           <option value="cellphoneNo">전화번호</option>
           <option value="name, cellphoneNo">이름, 전화번호</option>
         </select>
-        <div>
-          <input class="ml-6" type="radio" name="authLevel" value="7" />
-          <label>관리자</label>
-          <input class="ml-6" type="radio" name="authLevel" value="3" />
-          <label>사용자</label>
-          </div>
-      </form>
-     </div>
-     <div class="mt-4">
-      <button type="submit" class="ml-6 btn btn-primary">조회</button>
-      <button class="ml-2 btn btn-primary do-add-button">저장</button>
-      <form style="display: none;" method="POST" name="do-add-form" action="../member/doAdd">
-        <input type="hidden" name="memberId" value="" />
+        
+        <label><input class="ml-6" type="radio" name="authLevel" value= "7" />관리자</label>
+        <label><input class="ml-6" type="radio" name="authLevel" value= "3" />사용자</label>
+ 
+        <button type="submit" class="ml-6 btn btn-primary">조회</button>
+        
       </form>
       
       <button class="ml-2 btn btn-secondary do-delete-button">삭제</button>
       <form style="display: none;" method="POST" name="do-delete-form" action="../member/doDelete">
         <input type="hidden" name="memberId" value="" />
       </form>
+     
+     </div>
+
+
     </div>
  
     <div class="mt-8">
